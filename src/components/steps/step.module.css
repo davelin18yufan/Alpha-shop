@@ -1,0 +1,43 @@
+.stepProgressTitle {
+  line-height: 48px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+
+.stepProgressContainer {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.stepSign {
+  background-color: black;
+  color: white;
+  width:24px;
+  height:24px;
+  position:absolute;
+  left: 0;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.steps {
+  position:relative;
+  padding-left: 32px;
+}
+
+.steps::after{
+  position:absolute;
+  top: 50%;
+  left: calc(32px + 32px + 64px);
+  content: "";
+  width: 60px;
+  height: 1px;
+  background-color: black;
+}
+
+.progress {
+  line-height: 24px;
+  font-weight: 400;
+}

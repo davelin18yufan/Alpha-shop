@@ -1,3 +1,13 @@
+.container {
+  composes: mx-auto from "./App.css";
+  width: 90%;
+}
+
+.stepContainer {
+  width: 50%;
+  padding-left: 30px;
+}
+
 .siteHeader {
   position: sticky;
   top: 0px;
@@ -31,12 +41,12 @@
 }
 
 .navList {
+  composes: siteMenuList;
   display: flex;
   flex-direction: row;
   overflow: hidden;
   background-color: inherit;
   margin-right: auto;
-  composes: siteMenuList;
 }
 
 .navItem {
