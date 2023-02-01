@@ -1,0 +1,88 @@
+.siteHeader {
+  position: sticky;
+  top: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: inherit;
+  text-align: center;
+  z-index: 100;
+}
+
+.headerContainer {
+  display: flex;
+  position: relative;
+  max-width: 1100px;
+  height: 60px;
+  background-color: inherit;
+  align-items: stretch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbarMenu {
+  display: flex;
+  flex-grow: 1;
+  background-color: inherit;
+  align-items: center;
+}
+
+.siteMenuList {
+  max-width: calc(50% - 170px / 2 - 15px / 8);
+}
+
+.navList {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: inherit;
+  margin-right: auto;
+  composes: siteMenuList;
+}
+
+.navItem {
+  cursor: pointer;
+}
+
+.navLink {
+  font-weight: 500;
+  line-height: 24px;
+  color: #2A2A2A;
+  text-decoration: none;
+}
+
+.navIcon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.siteMenuList .navItem {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+
+.headerLogoContainer {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 60px;
+  width: 170px;
+}
+
+/* navbar-toggle */
+input#navbarToggle {
+  display: none;
+}
+
+label.burgerContainer {
+  display: none;
+}
+
+.iconToggle {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
