@@ -2,6 +2,12 @@
   margin-top: 64px;
 }
 
+
+/* address detail */
+.detailContainer {
+  margin-bottom: 3rem;
+}
+
 .stepTitle {
   width: 96px;
   height: 24px;
@@ -48,7 +54,7 @@ select {
   z-index: -1;
 }
 
-.addressDetail {
+.detailRow {
   display: flex;
   justify-content: space-between;
   margin: 1.5rem 0;
@@ -62,4 +68,34 @@ select {
 .emailInput {
   width: 250px;
   margin-top: 0.5rem;
+}
+
+/* control panel */
+.controlPanel{
+  position: relative;
+  height: 72px;
+  border-top: 1px solid #E5E5E5;;
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 174px;
+  height: 46px;
+  background: #F67599;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+
+.btn:hover {
+    background: #f4a2b9;
+}
+
+.nextStep::after {
+  content: "\2192";
+  margin-left: 1rem;
 }

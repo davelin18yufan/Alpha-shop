@@ -2,10 +2,10 @@ import styles from "./firstStep.module.css"
 
 function FirstStep(){
   return(
-    <>
+    <div className={styles.detailContainer}>
       <h4 className={styles.stepTitle}>寄送地址</h4>
-      <form>
-        <div className={styles.addressDetail}>
+      <form id="firstStep">
+        <div className={styles.detailRow}>
           <label for="gender" className={styles.labelSelect}>稱謂
             <select name="gender" id="gender" >
               <option value="male">先生</option>
@@ -16,7 +16,7 @@ function FirstStep(){
               <input type="text" id="name" name="name" placeholder="請輸入姓名" className={styles.textInput}></input>
           </label>
         </div>
-        <div className={styles.addressDetail}>
+        <div className={styles.detailRow}>
           <label for="phone" >電話
               <input type="text" id="phone" name="phone" placeholder="請輸入行動電話" className={styles.emailInput}></input>
           </label >
@@ -24,7 +24,7 @@ function FirstStep(){
               <input type="email" id="email" name="email" placeholder="請輸入電子郵件" className={styles.emailInput}></input>
           </label>
         </div>
-        <div className={styles.addressDetail}>
+        <div className={styles.detailRow}>
           <label for="gender" className={styles.labelSelect}>縣市
           <select name="gender" id="gender" >
             <option disabled selected>請選擇縣市</option>
@@ -39,7 +39,17 @@ function FirstStep(){
           </label>
         </div>
       </form>
-    </>
+    </div>
+  )
+}
+
+function Button() {
+  return(
+  <div className={styles.controlPanel}>
+    <button className={styles.btn}>
+      <p className={styles.nextStep}>下一步</p>
+    </button>
+  </div>
   )
 }
 
@@ -47,6 +57,7 @@ export default function Steps() {
   return(
     <div className={styles.stepsContainer}>
       <FirstStep />
+      <Button />
     </div>
   )
 }
