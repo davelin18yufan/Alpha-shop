@@ -1,7 +1,7 @@
 import  './App.css';
 import styles from "./App.module.css"
 import  StepProgress from "./components/steps/stepProgress.js"
-import Steps from "./components/steps/steps"
+import Steps from "./components/steps/firstStep"
 
 function Header() {
   return(
