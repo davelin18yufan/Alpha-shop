@@ -1,0 +1,65 @@
+.stepsContainer {
+  margin-top: 64px;
+}
+
+.stepTitle {
+  width: 96px;
+  height: 24px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+label, input, select{
+  display: block;
+}
+
+input, select {
+  border: 1px solid #5E5E5E;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 0 0 10px;
+  font-size: 1rem;
+}
+
+select {
+  margin-top: 0.5rem;
+  width: 160px;
+  background-color: transparent;
+  /* 消除預設的箭頭 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.labelSelect{
+  position: relative;
+}
+
+.labelSelect::after {
+  content: "";
+  border-style: solid;
+  border-width: 5px 4.5px 0 4.5px;
+  border-color: #000000 transparent transparent transparent;
+  /* background-color: black; */
+  position: absolute;
+  right: 17px;
+  bottom: 18px;
+  z-index: -1;
+}
+
+.addressDetail {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+}
+
+.textInput {
+  width: 350px;
+  margin-top: 0.5rem;
+}
+
+.emailInput {
+  width: 250px;
+  margin-top: 0.5rem;
+}

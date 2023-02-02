@@ -1,11 +1,11 @@
-import styles from "./step.module.css"
+import styles from "./stepProgress.module.css"
 
 function StepSign({num, progress}) {
   return(
-    <div className={styles.steps}>
+    <a href="/" className={styles.steps}>
       <div className={styles.stepSign}>{num}</div>
       <span className={styles.progress}>{progress}</span>     
-    </div>
+    </a>
   )
 }
 

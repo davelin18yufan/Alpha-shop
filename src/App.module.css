@@ -1,6 +1,7 @@
 .container {
   composes: mx-auto from "./App.css";
   width: 90%;
+  max-width: 1100px;
 }
 
 .stepContainer {

@@ -1,6 +1,7 @@
 import  './App.css';
 import styles from "./App.module.css"
-import  StepProgress from "./components/steps/step.js"
+import  StepProgress from "./components/steps/stepProgress.js"
+import Steps from "./components/steps/steps"
 
 function Header() {
   return(
@@ -76,6 +77,7 @@ function App() {
       <Header />
       <div className={styles.stepContainer}>
         <StepProgress />
+        <Steps />
       </div>
     </div>
   );

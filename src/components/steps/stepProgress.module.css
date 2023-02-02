@@ -25,14 +25,19 @@
 .steps {
   position:relative;
   padding-left: 32px;
+  opacity: 0.5;
+}
+
+.steps:focus {
+  opacity: 1;
 }
 
 .steps::after{
   position:absolute;
   top: 50%;
-  left: calc(32px + 32px + 64px);
+  right: -100%;
   content: "";
-  width: 60px;
+  width: 70%;
   height: 1px;
   background-color: black;
 }
