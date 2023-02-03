@@ -1,8 +1,10 @@
 import styles from "./firstStep.module.css"
+import SecondStep from "./secondStep"
+
 
 function FirstStep(){
   return(
-    <div className={styles.detailContainer}>
+    <>
       <h4 className={styles.stepTitle}>寄送地址</h4>
       <form id="firstStep">
         <div className={styles.detailRow}>
@@ -39,25 +41,45 @@ function FirstStep(){
           </label>
         </div>
       </form>
+    </>
+  )
+}
+
+function DetailContainer({children}) {
+  return(
+    <div className={styles.detailContainer}>
+      {children}
     </div>
   )
 }
 
-function Button() {
+function Button({buttonStyle, stepStyle, step}){
   return(
-  <div className={styles.controlPanel}>
-    <button className={styles.btn}>
-      <p className={styles.nextStep}>下一步</p>
-    </button>
-  </div>
+    <buttonStyle className={buttonStyle}>
+      <p className={stepStyle}>{step}</p>
+    </buttonStyle>
   )
 }
+
 
 export default function Steps() {
   return(
     <div className={styles.stepsContainer}>
-      <FirstStep />
-      <Button />
+      <DetailContainer>
+        <SecondStep />
+      </DetailContainer>
+      <div className={styles.controlPanel}>
+        <Button
+          buttonStyle={styles.previousBtn}
+          stepStyle={styles.previousStep}
+          step="上一步"
+        />
+        <Button
+          buttonStyle={styles.nextBtn}
+          stepStyle={styles.nextStep}
+          step="下一步"
+        />
+      </div>
     </div>
   )
 }
