@@ -1,7 +1,8 @@
 import  './App.css';
 import styles from "./App.module.css"
-import  StepProgress from "./components/steps/stepProgress.js"
-import Steps from "./components/steps/firstStep"
+import  StepProgress from "./components/stepProgress.js"
+import Steps from "./components/steps"
+import ControlPanel from "./components/controlPanel"
 
 function Header() {
   return(
@@ -78,6 +79,7 @@ function App() {
       <div className={styles.stepContainer}>
         <StepProgress />
         <Steps />
+        <ControlPanel />
       </div>
     </div>
   );

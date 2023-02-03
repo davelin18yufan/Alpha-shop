@@ -17,7 +17,7 @@ export default function SecondStep() {
   return(
     <>
       <h4 className={styles.stepTitle}>運送方式</h4>
-      <form>
+      <div>
         <Delivery 
           type="標準運送"
           typeDetail="約3~7個工作天" 
@@ -28,7 +28,7 @@ export default function SecondStep() {
           typeDetail="48小時內送達" 
           deliveryType="DHL"
         />
-      </form>
+      </div>
     </>
   )
 }

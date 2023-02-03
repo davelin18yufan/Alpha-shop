@@ -1,0 +1,46 @@
+/* control panel */
+.controlPanel{
+  position: relative;
+  height: 72px;
+  border-top: 1px solid #E5E5E5;
+}
+
+.nextBtn, .previousBtn {
+  position: absolute;
+  bottom: 0;
+  width: 174px;
+  height: 46px;
+  cursor: pointer;
+  border: none;
+}
+
+.nextBtn {
+  right: 0;
+  background: #F67599;
+  font-size: 14px;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.nextStep::after {
+  content: "\2192";
+  margin-left: 1rem;
+}
+
+.previousBtn {
+  left: 0;
+  background: none;
+  text-align: start;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.previousStep::before{
+  content: "\2190";
+  margin-right: 1rem;
+}
+
+button:hover {
+  opacity:0.7;
+}
