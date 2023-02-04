@@ -1,4 +1,3 @@
-import  './App.css';
 import styles from "./App.module.css"
 import  StepProgress from "./components/stepProgress.js"
 import Steps from "./components/steps"

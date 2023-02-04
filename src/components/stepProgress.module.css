@@ -35,7 +35,7 @@
 .steps::after{
   position:absolute;
   top: 50%;
-  right: -100%;
+  right: -90%;
   content: "";
   width: 70%;
   height: 1px;
