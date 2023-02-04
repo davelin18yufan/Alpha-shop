@@ -3,9 +3,9 @@ import SecondStep from "./steps/secondStep"
 import LastStep from "./steps/lastStep"
 import styles from "./steps.module.css"
 
-function DetailContainer({children}) {
+function StepContainer({children}) {
   return(
-    <div className={styles.detailContainer}>
+    <div className={styles.stepContainer}>
       <form id="form" >
        {children}
       </form>
@@ -15,12 +15,10 @@ function DetailContainer({children}) {
 
 export default function Steps() {
   return(
-    <div className={styles.stepsContainer}>
-      <DetailContainer>
-        <FirstStep />
-        {/* <SecondStep /> */}
-        {/* <LastStep /> */}
-      </DetailContainer>
-    </div>
+    <StepContainer>
+      <FirstStep />
+      {/* <SecondStep /> */}
+      {/* <LastStep /> */}
+    </StepContainer>
   )
 }
