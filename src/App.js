@@ -73,14 +73,22 @@ function Header() {
 
 function App() {
   return (
-    <div className={styles.container}>
-      <Header />
+    <>
+    <Header />
+    <main className={styles.main}>
+      <h2 className={styles.checkTitle}>結帳</h2>
+      <section className={styles.container}>
       <div className={styles.stepContainer}>
         <StepProgress />
         <Steps />
         <ControlPanel />
       </div>
-    </div>
+      <div className={styles.cartContainer}>
+
+      </div>
+      </section>
+    </main>
+    </>
   );
 }
 

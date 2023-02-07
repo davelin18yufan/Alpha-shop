@@ -12,7 +12,7 @@ function StepSign({num, progress}) {
 export default function StepProgress() {
   return(
     <div>
-      <h2 className={styles.stepProgressTitle}>結帳</h2>
+      
       <div className={styles.stepProgressContainer}>
         <StepSign 
           num= "1"
