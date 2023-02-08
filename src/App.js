@@ -2,6 +2,7 @@ import styles from "./App.module.css"
 import  StepProgress from "./components/stepProgress.js"
 import Steps from "./components/steps"
 import ControlPanel from "./components/controlPanel"
+import Cart from "./components/carts/cart"
 
 function Header() {
   return(
@@ -84,7 +85,7 @@ function App() {
         <ControlPanel />
       </div>
       <div className={styles.cartContainer}>
-
+        <Cart />
       </div>
       </section>
     </main>

@@ -1,0 +1,91 @@
+/* reset default scrollbar */
+::-webkit-scrollbar{
+  width: 0;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+/* ::-webkit-scrollbar-thumb {
+  border-radius: 3px; /*長度一半造成圓弧效果
+} */
+
+/* Cart */
+.cartTitle{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+/* List */
+.cartList {
+  height: 300px;
+  overflow-y: scroll;
+  /* padding-left: 6px;  scrollbar的寬度會把內容往左推*/
+}
+
+
+.cartItemWrapper {
+  display: flex;
+  height: 100px;
+  margin-top: 2rem;
+}
+
+
+.cartItemImage{
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+}
+
+.cartItemDetail {
+  flex: 1;
+  padding: 0 0 20px 20px;
+}
+
+.cartItemLabel{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartItemQuantity {
+  width: 60px;
+  position: relative;
+  margin-top: 1.5rem;
+  padding-left: 2rem;
+  text-align: center;
+  z-index: 1;
+}
+
+
+.cartItemQuantity::before,
+.cartItemQuantity::after {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 0;
+  background: #F0F0F5;
+  border-radius: 50%;
+  z-index: 2;
+  /* fine tunning content and background */
+  font-size: 16px; /*字體對齊的中心點在文字下緣，稍微無法對齊*/
+  line-height: 26px; /* 26等同於容器大小，置中*/
+  transform:translateY(-4px); /*16px為中心點代表上下左右各4px，上移對齊*/
+}
+
+.cartItemQuantity::before{
+  content: "-";
+  left: 0;
+}
+
+.cartItemQuantity::after{
+  content: "+";
+  right: calc(-50% + 8px);
+}
+
+/* Summary */
+.cartSummary {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid #F0F0F5;
+}
