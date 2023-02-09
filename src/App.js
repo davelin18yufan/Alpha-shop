@@ -1,8 +1,9 @@
 import styles from "./App.module.css"
-import  StepProgress from "./components/stepProgress.js"
+import StepProgress from "./components/stepProgress.js"
 import Steps from "./components/steps"
 import ControlPanel from "./components/controlPanel"
 import Cart from "./components/carts/cart"
+import {ReactComponent as Logo} from "./icons/logo.svg"
 
 function Header() {
   return(
@@ -10,7 +11,7 @@ function Header() {
       <div className={styles.headerContainer}>
         {/* navbar-toggle  */}
         <input id={styles.navbarToggle} className={styles.navbarToggle} type="checkbox" />
-        <label for={styles.navbarToggle} className={styles.burgerContainer}>
+        <label htmlFor={styles.navbarToggle} className={styles.burgerContainer}>
           <svg className={styles.iconToggle}>
             <use xlinkHref="#svg-icon-toggle"></use>
           </svg>
@@ -63,9 +64,7 @@ function Header() {
 
         {/* <!-- logo --> */}
         <a className={styles.headerLogoContainer} href="/">
-          <svg className="icon-logo cursor-point">
-            <use xlinkHref="#svg-icon-logo"></use>
-          </svg>
+          <Logo />
         </a>
       </div>
     </header>
