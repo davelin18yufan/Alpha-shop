@@ -54,7 +54,7 @@ function Header() {
                 <use xlinkHref="#svg-icon-moon"></use>
               </svg>               
               {/* <!-- sun --> */}
-              <svg classNameName={styles.navIcon}>
+              <svg className={styles.navIcon}>
                 <use xlinkHref="#svg-icon-sun" />
               </svg>
             </li>

@@ -4,7 +4,7 @@ import items from "./items";
 function CartItem({ item }) {
   return (
     <ul>
-      <li className={styles.cartItemWrapper} key={item.id}>
+      <li className={styles.cartItemWrapper} >
         <img
           src={item.img}
           alt={item.name + "image"}
@@ -28,7 +28,7 @@ function CartList({ items }) {
   return (
     <div className={styles.cartList}>
       {items.map((item) => (
-        <CartItem item={item} />
+        <CartItem item={item} key={item.id}/>
       ))}
     </div>
   );
