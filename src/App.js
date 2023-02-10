@@ -3,7 +3,7 @@ import StepProgress from "./components/stepProgress.js"
 import Steps from "./components/steps"
 import ControlPanel from "./components/controlPanel"
 import Cart from "./components/carts/cart"
-import {ReactComponent as Logo} from "./icons/logo.svg"
+import Icon from "./icons/icon"
 
 function Header() {
   return(
@@ -12,9 +12,9 @@ function Header() {
         {/* navbar-toggle  */}
         <input id={styles.navbarToggle} className={styles.navbarToggle} type="checkbox" />
         <label htmlFor={styles.navbarToggle} className={styles.burgerContainer}>
-          <svg className={styles.iconToggle}>
-            <use xlinkHref="#svg-icon-toggle"></use>
-          </svg>
+          <div className={styles.iconToggle}>
+            <Icon.Toggle />
+          </div>
         </label>
 
         {/* <!-- navbar-menu --> */}
@@ -36,35 +36,35 @@ function Header() {
               <a className={styles.navLink} href="/">聯絡我們</a>
             </li>
           </ul>
-          <ul className={styles.navList}>
+          <ul className={styles.navIconList}>
             {/* <!-- search --> */}
             <li className={styles.navItem}>
-              <svg className={styles.navIcon}>
-                <use xlinkHref="#svg-icon-search"></use>
-              </svg>                              
+              <div className={styles.navIcon}>
+                <Icon.Search />
+              </div>                              
             </li>
             {/* <!-- cart --> */}
             <li className={styles.navItem}>
-              <svg className={styles.navIcon}>
-                <use xlinkHref="#svg-icon-cart"></use>
-              </svg>
+              <div className={styles.navIcon}>
+                <Icon.Cart />
+              </div>
             </li>
             <li id="theme-toggle" className={styles.navItem}>
               {/* <!-- moon --> */}
-              <svg className={styles.navIcon}>
-                <use xlinkHref="#svg-icon-moon"></use>
-              </svg>               
+              <div className={styles.navIcon}>
+                <Icon.Moon />
+              </div>               
               {/* <!-- sun --> */}
-              <svg className={styles.navIcon}>
-                <use xlinkHref="#svg-icon-sun" />
-              </svg>
+              <div className={styles.navIcon}>
+                <Icon.Sun />
+              </div>
             </li>
           </ul>
         </nav>
 
         {/* <!-- logo --> */}
         <a className={styles.headerLogoContainer} href="/">
-          <Logo />
+          <Icon.Logo />
         </a>
       </div>
     </header>

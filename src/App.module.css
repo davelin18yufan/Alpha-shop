@@ -100,13 +100,21 @@ li {
   max-width: calc(50% - 170px / 2 - 15px / 8);
 }
 
-.navList {
+.navList,
+.navIconList {
   composes: siteMenuList;
   display: flex;
   flex-direction: row;
   overflow: hidden;
   background-color: inherit;
+}
+
+.navList {
   margin-right: auto;
+}
+
+.navIconList {
+  padding-top: 15px;
 }
 
 .navItem {
@@ -132,6 +140,8 @@ li {
 }
 
 
+
+/* Logo */
 .headerLogoContainer {
   position: absolute;
   top: 15px;
