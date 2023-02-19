@@ -5,6 +5,7 @@ import ControlPanel from "./components/controlPanel"
 import Cart from "./components/carts/cart"
 import Icon from "./icons/icon"
 
+
 function Header() {
   return(
     <header className={styles.siteHeader}>
@@ -72,6 +73,7 @@ function Header() {
 }
 
 function App() {
+
   return (
     <>
     <Header />
