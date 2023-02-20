@@ -1,6 +1,6 @@
-import FirstStep from "./steps/firstStep"
-import SecondStep from "./steps/secondStep"
-import LastStep from "./steps/lastStep"
+import FirstStep from "../steps/firstStep"
+import SecondStep from "../steps/secondStep"
+import LastStep from "../steps/lastStep"
 import styles from "./steps.module.css"
 
 

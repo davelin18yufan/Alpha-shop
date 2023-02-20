@@ -1,7 +1,7 @@
 import styles from "./App.module.css"
-import StepProgress from "./components/stepProgress"
-import Steps from "./components/steps"
-import ControlPanel from "./components/controlPanel"
+import StepProgress from "./components/form/stepProgress"
+import Steps from "./components/form/steps"
+import ControlPanel from "./components/form/controlPanel"
 import Cart from "./components/carts/cart"
 import Icon from "./icons/icon"
 

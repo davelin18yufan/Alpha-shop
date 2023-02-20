@@ -16,7 +16,9 @@ function CartItem({ item }) {
             <b>${item.price}</b>
           </div>
           <div className={styles.cartItemQuantity}>
-            <p>{item.quantity}</p>
+            <p className={styles.counter}>-</p>
+            <p className={styles.quantityLabel}>{item.quantity}</p>
+            <p className={styles.counter}>+</p>
           </div>
         </div>
       </li>
