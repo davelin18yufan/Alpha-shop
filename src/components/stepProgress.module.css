@@ -15,6 +15,7 @@
   left: 0;
   border-radius: 50%;
   text-align: center;
+  line-height: 24px;
 }
 
 .steps {
@@ -23,7 +24,9 @@
   opacity: 0.5;
 }
 
-.steps:focus {
+.stepChecked {
+  /*inherit steps class so the pseudo element exists*/
+  composes: steps;
   opacity: 1;
 }
 
@@ -36,6 +39,7 @@
   height: 1px;
   background-color: black;
 }
+
 
 .progress {
   line-height: 24px;

@@ -1,10 +1,11 @@
 import styles from "./App.module.css"
-import StepProgress from "./components/stepProgress.js"
+import StepProgress from "./components/stepProgress"
 import Steps from "./components/steps"
 import ControlPanel from "./components/controlPanel"
 import Cart from "./components/carts/cart"
 import Icon from "./icons/icon"
 
+import {useState} from "react"
 
 function Header() {
   return(
@@ -73,23 +74,25 @@ function Header() {
 }
 
 function App() {
+  const [currentStep, setCurrentStep] = useState(1)
+  /* passing currentStep amd setter function down */
 
   return (
     <>
-    <Header />
-    <main className={styles.main}>
-      <h2 className={styles.checkTitle}>結帳</h2>
-      <section className={styles.container}>
-      <div className={styles.stepContainer}>
-        <StepProgress />
-        <Steps />
-        <ControlPanel />
-      </div>
-      <div className={styles.cartContainer}>
-        <Cart />
-      </div>
-      </section>
-    </main>
+      <Header />
+      <main className={styles.main}>
+        <h2 className={styles.checkTitle}>結帳</h2>
+        <section className={styles.container}>
+        <div className={styles.stepContainer}>
+          <StepProgress currentStep={currentStep}/>
+          <Steps currentStep={currentStep}/>
+          <ControlPanel currentStep={currentStep} setCurrentStep={setCurrentStep}/>
+        </div>
+        <div className={styles.cartContainer}>
+          <Cart />
+        </div>
+        </section>
+      </main>
     </>
   );
 }

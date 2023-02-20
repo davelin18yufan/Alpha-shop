@@ -3,6 +3,8 @@ import SecondStep from "./steps/secondStep"
 import LastStep from "./steps/lastStep"
 import styles from "./steps.module.css"
 
+
+
 function StepContainer({children}) {
   return(
     <div className={styles.stepContainer}>
@@ -13,12 +15,15 @@ function StepContainer({children}) {
   )
 }
 
-export default function Steps() {
+
+
+export default function Steps({currentStep}) {
+  /* display depends on currentStep */
   return(
     <StepContainer>
-      <FirstStep />
-      {/* <SecondStep /> */}
-      {/* <LastStep /> */}
+      {currentStep === 1 && <FirstStep />}
+      {currentStep === 2 && <SecondStep />}
+      {currentStep === 3 && <LastStep />}
     </StepContainer>
   )
 }
