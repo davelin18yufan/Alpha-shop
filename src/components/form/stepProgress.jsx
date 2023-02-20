@@ -15,13 +15,13 @@ export default function StepProgress({currentStep}) {
       
       <div className={styles.stepProgressContainer}>
         <StepSign 
-          num= {currentStep > 1 ? "✓" : "1"}
+          num= {currentStep > 1 ? "✔" : "1"}
           progress="寄送地址"
           /* Step one always display */
           isChecked={styles.stepChecked} 
         />
          <StepSign 
-          num= {currentStep > 2 ? "✓" : "2"}
+          num= {currentStep > 2 ? "✔" : "2"}
           progress="運送方式"
           isChecked={currentStep > 1 ? styles.stepChecked : styles.steps}
         />
