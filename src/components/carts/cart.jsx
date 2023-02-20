@@ -1,7 +1,39 @@
 import styles from "./cart.module.css";
 import items from "./items";
+import {useState} from "react"
 
-function CartItem({ item }) {
+
+function CartItem({ item, cart, setCart }) {
+
+  function handlePlusCounterClick(){
+    setCart(cart.map(listItem => {
+      if(listItem.id === item.id){
+        return {
+          ...listItem,
+          quantity: listItem.quantity + 1
+        }
+      }else{
+        return listItem
+      }
+    }))
+  }
+
+    function handleMinusCounterClick(){
+      let nextCart = cart.map(listItem => {
+        if(listItem.id === item.id){
+          return {
+            ...listItem,
+            quantity: listItem.quantity - 1
+          }
+        }else{
+          return listItem
+        }
+      })
+      //if quantity < 0, remove
+      nextCart = nextCart.filter(item => item.quantity > 0)
+      setCart(nextCart)
+  }
+
   return (
     <ul>
       <li className={styles.cartItemWrapper} >
@@ -16,9 +48,9 @@ function CartItem({ item }) {
             <b>${item.price}</b>
           </div>
           <div className={styles.cartItemQuantity}>
-            <p className={styles.counter}>-</p>
+            <p className={styles.counter} onClick={handleMinusCounterClick}>-</p>
             <p className={styles.quantityLabel}>{item.quantity}</p>
-            <p className={styles.counter}>+</p>
+            <p className={styles.counter} onClick={handlePlusCounterClick}>+</p>
           </div>
         </div>
       </li>
@@ -26,11 +58,16 @@ function CartItem({ item }) {
   )
 }
 
-function CartList({ items }) {
+function CartList({ cart, setCart }) {
   return (
     <div className={styles.cartList}>
-      {items.map((item) => (
-        <CartItem item={item} key={item.id}/>
+      {cart.map((item) => (
+        <CartItem 
+          item={item} 
+          key={item.id} 
+          //passing down to children
+          cart={cart}
+          setCart={setCart}/>
       ))}
     </div>
   );
@@ -45,10 +82,11 @@ function Freight() {
   );
 }
 
-function Total() {
+function Total({ cart }) {
   let total = 0;
-  items.forEach((item) => {
-    total += item.price * item.quantity;
+  //items decided by customer
+  cart.forEach((item) => {
+    total += item.price * item.quantity
     return total;
   });
   return (
@@ -60,14 +98,18 @@ function Total() {
 }
 
 export default function Cart() {
+  //define here, passing to several children
+  const [cart, setCart] = useState(items)
+
   return (
     <>
       <h5 className={styles.cartTitle}>購物籃</h5>
       <div className={styles.cartList}>
-        <CartList items={items} />
+        {/* passing state hook down */}
+        <CartList cart={cart} setCart={setCart}/>
       </div>
       <Freight />
-      <Total />
+      <Total cart={cart}/>
     </>
   );
 }

@@ -68,6 +68,11 @@
   transform:translateY(-4px); /*16px為中心點代表上下左右各4px，上移對齊  */
 }
 
+.counter:hover{
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 
 /* Summary */
 .cartSummary {
