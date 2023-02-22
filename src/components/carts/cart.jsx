@@ -3,37 +3,8 @@ import items from "./items";
 import {useState} from "react"
 
 
-function CartItem({ item, cart, setCart }) {
-
-  function handlePlusCounterClick(){
-    setCart(cart.map(listItem => {
-      if(listItem.id === item.id){
-        return {
-          ...listItem,
-          quantity: listItem.quantity + 1
-        }
-      }else{
-        return listItem
-      }
-    }))
-  }
-
-    function handleMinusCounterClick(){
-      let nextCart = cart.map(listItem => {
-        if(listItem.id === item.id){
-          return {
-            ...listItem,
-            quantity: listItem.quantity - 1
-          }
-        }else{
-          return listItem
-        }
-      })
-      //if quantity < 0, remove
-      nextCart = nextCart.filter(item => item.quantity > 0)
-      setCart(nextCart)
-  }
-
+function CartItem({ item, onPlusCount, onMinusCount }) {
+  //keep children component naive
   return (
     <ul>
       <li className={styles.cartItemWrapper} >
@@ -48,29 +19,14 @@ function CartItem({ item, cart, setCart }) {
             <b>${item.price}</b>
           </div>
           <div className={styles.cartItemQuantity}>
-            <p className={styles.counter} onClick={handleMinusCounterClick}>-</p>
+            <p className={styles.counter} onClick={()=> { onMinusCount(item) }}>-</p>
             <p className={styles.quantityLabel}>{item.quantity}</p>
-            <p className={styles.counter} onClick={handlePlusCounterClick}>+</p>
+            <p className={styles.counter} onClick={() => { onPlusCount(item) }}>+</p>
           </div>
         </div>
       </li>
     </ul>
   )
-}
-
-function CartList({ cart, setCart }) {
-  return (
-    <div className={styles.cartList}>
-      {cart.map((item) => (
-        <CartItem 
-          item={item} 
-          key={item.id} 
-          //passing down to children
-          cart={cart}
-          setCart={setCart}/>
-      ))}
-    </div>
-  );
 }
 
 function Freight() {
@@ -97,16 +53,54 @@ function Total({ cart }) {
   );
 }
 
+//keep logic and calculation stick with the states
+//maintain simplicity and readable
 export default function Cart() {
   //define here, passing to several children
   const [cart, setCart] = useState(items)
+  //define here, cluster up for readability
+  function handlePlusCounterClick(target){
+    setCart(cart.map(listItem => {
+      if(listItem.id === target.id){
+        return {
+          ...listItem,
+          quantity: listItem.quantity + 1
+        }
+      }else{
+        return listItem
+      }
+    }))
+  }
+
+  function handleMinusCounterClick(target){
+    let nextCart = cart.map(listItem => {
+      if(listItem.id === target.id){
+        return {
+          ...listItem,
+          quantity: listItem.quantity - 1
+        }
+      }else{
+        return listItem
+      }
+    })
+      //if quantity < 0, remove
+      nextCart = nextCart.filter(item => item.quantity > 0)
+      setCart(nextCart)
+  }
 
   return (
     <>
       <h5 className={styles.cartTitle}>購物籃</h5>
       <div className={styles.cartList}>
         {/* passing state hook down */}
-        <CartList cart={cart} setCart={setCart}/>
+        {cart.map((item) => (
+          <CartItem 
+            item={item} 
+            key={item.id} 
+            onPlusCount={handlePlusCounterClick}
+            onMinusCount={handleMinusCounterClick}
+          />
+      ))}
       </div>
       <Freight />
       <Total cart={cart}/>
