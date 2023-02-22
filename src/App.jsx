@@ -1,8 +1,8 @@
 import styles from "./App.module.css"
-import StepProgress from "./components/form/stepProgress"
-import Steps from "./components/form/steps"
-import ControlPanel from "./components/form/controlPanel"
-import Cart from "./components/carts/cart"
+import StepProgress from "./components/form/StepProgress"
+import Steps from "./components/form/Steps"
+import ControlPanel from "./components/form/ControlPanel"
+import Cart from "./components/carts/Cart"
 import Icon from "./icons/icon"
 
 import {useState} from "react"
