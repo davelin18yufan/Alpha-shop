@@ -1,6 +1,6 @@
 import styles from "./cart.module.css";
-import items from "./items";
-import {useState} from "react"
+import { CartContext } from "./CartContext";
+import { useState, useContext } from "react"
 
 
 function CartItem({ item, onPlusCount, onMinusCount }) {
@@ -57,6 +57,7 @@ function Total({ cart }) {
 //maintain simplicity and readable
 export default function Cart() {
   //define here, passing to several children
+  const items = useContext(CartContext)
   const [cart, setCart] = useState(items)
   //define here, cluster up for readability
   function handlePlusCounterClick(target){

@@ -4,8 +4,8 @@ import Steps from "./components/form/Steps"
 import ControlPanel from "./components/form/ControlPanel"
 import Cart from "./components/carts/Cart"
 import Icon from "./icons/icon"
-
-import {useState} from "react"
+import {CartContext} from "./components/carts/CartContext"
+import { useState, useContext } from "react"
 
 function Header() {
   return(
@@ -74,25 +74,27 @@ function Header() {
 }
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(1)
   /* passing currentStep amd setter function down */
-
+  const [currentStep, setCurrentStep] = useState(1)
+  const items = useContext(CartContext)
   return (
     <>
-      <Header />
-      <main className={styles.main}>
-        <h2 className={styles.checkTitle}>結帳</h2>
-        <section className={styles.container}>
-        <div className={styles.stepContainer}>
-          <StepProgress currentStep={currentStep}/>
-          <Steps currentStep={currentStep}/>
-          <ControlPanel currentStep={currentStep} setCurrentStep={setCurrentStep}/>
-        </div>
-        <div className={styles.cartContainer}>
-          <Cart />
-        </div>
-        </section>
-      </main>
+      <CartContext.Provider value={items}>
+        <Header />
+        <main className={styles.main}>
+          <h2 className={styles.checkTitle}>結帳</h2>
+          <section className={styles.container}>
+          <div className={styles.stepContainer}>
+            <StepProgress currentStep={currentStep}/>
+            <Steps currentStep={currentStep}/>
+            <ControlPanel currentStep={currentStep} setCurrentStep={setCurrentStep}/>
+          </div>
+          <div className={styles.cartContainer}>
+            <Cart />
+          </div>
+          </section>
+        </main>
+      </CartContext.Provider>
     </>
   );
 }

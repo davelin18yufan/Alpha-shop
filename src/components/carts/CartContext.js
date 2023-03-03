@@ -1,3 +1,5 @@
+import { createContext } from "react"
+
 const items = [
   {
     id: '1',
@@ -15,4 +17,5 @@ const items = [
   },
 ]
 
-export default items;
+export const CartContext = createContext(items)
+
