@@ -1,9 +1,11 @@
 import styles from "./controlPanel.module.css"
+import { OrderContext } from "../../contexts/OrderContext"
+import { CartContext } from "../../contexts/CartContext"
+import { useContext } from "react"
 
-
-function Button({type, buttonStyle, stepStyle, step, onClick}){
+function Button({ buttonStyle, stepStyle, step, onClick}){
   return(
-    <button form="form" type={type} className={buttonStyle} onClick={onClick}>
+    <button form="form" className={buttonStyle} onClick={onClick}>
       <p className={stepStyle}>{step}</p>
     </button>
   )
@@ -11,14 +13,19 @@ function Button({type, buttonStyle, stepStyle, step, onClick}){
 
 
 export default function ControlPanel({currentStep, setCurrentStep}) {
+  //destructing object cause the OrderContext value is an object
+  const {order} = useContext(OrderContext)
+  const items = useContext(CartContext)
 
   function handleNextStepClick(e){
     e.preventDefault()
+    let total = 0
+    items.forEach(item => 
+      total += item.price* item.quantity)
     if(currentStep < 3){
       setCurrentStep(currentStep + 1)
     }else{
-      /* Submit */
-      return
+     console.log(order)
     }
   }
 
@@ -27,6 +34,7 @@ export default function ControlPanel({currentStep, setCurrentStep}) {
     /* button disappear if currentStep < 1 */
     setCurrentStep(currentStep - 1)
   }
+
 
   return(
       <div className={styles.controlPanel}>
