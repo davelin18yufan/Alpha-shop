@@ -6,7 +6,9 @@ Assignment of Alpha Camp Front-end course
 
 ## Getting Start
 
-- Static view only for now
+- Control input steps
+- Increase and decrease cart amount
+- press "確認下單", log user input and total price
 
 ## How to deploy
 
