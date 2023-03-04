@@ -6,7 +6,6 @@ import Cart from "./components/carts/Cart"
 import Icon from "./icons/icon"
 import { CartContextProvider } from "./contexts/CartContext"
 import { OrderProvider} from "./contexts/OrderContext"
-import { useState } from "react"
 
 function Header() {
   return(
@@ -76,19 +75,18 @@ function Header() {
 
 function App() {
   /* passing currentStep amd setter function down */
-  const [currentStep, setCurrentStep] = useState(1)
   return (
     <>
       <Header />
       <main className={styles.main}>
         <CartContextProvider  >
-          <OrderProvider currentStep={currentStep}>
+          <OrderProvider >
             <h2 className={styles.checkTitle}>結帳</h2>
             <section className={styles.container}>
             <div className={styles.stepContainer}>
-              <StepProgress currentStep={currentStep}/>
-              <Steps currentStep={currentStep}/>
-              <ControlPanel currentStep={currentStep} setCurrentStep={setCurrentStep}/>
+              <StepProgress />
+              <Steps />
+              <ControlPanel />
             </div>
             <div className={styles.cartContainer}>
               <Cart />

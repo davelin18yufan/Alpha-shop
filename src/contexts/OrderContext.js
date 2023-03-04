@@ -3,7 +3,9 @@ import { useState } from "react"
 
 export const OrderContext = createContext(null)
 
-export function OrderProvider({ children, currentStep }) {
+export function OrderProvider({ children }) {
+  const [currentStep, setCurrentStep] = useState(1)
+
   const [order, setOrder] = useState({
     //configure template for readability
     //skip 1 and 2
@@ -33,10 +35,14 @@ export function OrderProvider({ children, currentStep }) {
 
   return(
     <OrderContext.Provider 
-      value={{order, handleInputChange}}>
+      value={{order, 
+        handleInputChange, 
+        currentStep, 
+        setCurrentStep}}>
       {children}
     </OrderContext.Provider>
   )
 }
 
 //provide info of userInput  and input onChange event
+//provide currentStep state

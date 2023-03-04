@@ -12,7 +12,8 @@ function Button({ buttonStyle, stepStyle, step, onClick}){
 }
 
 
-export default function ControlPanel({currentStep, setCurrentStep}) {
+export default function ControlPanel() {
+  const {currentStep, setCurrentStep} = useContext(OrderContext)
   //destructing object cause the OrderContext value is an object
   const {order} = useContext(OrderContext)
   const {cart} = useContext(CartContext)

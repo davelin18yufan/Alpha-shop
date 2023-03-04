@@ -2,8 +2,8 @@ import FirstStep from "../steps/FirstStep"
 import SecondStep from "../steps/SecondStep"
 import LastStep from "../steps/LastStep"
 import styles from "./steps.module.css"
-
-
+import { OrderContext } from "../../contexts/OrderContext"
+import { useContext } from "react"
 
 function StepContainer({children}) {
   return(
@@ -17,7 +17,8 @@ function StepContainer({children}) {
 
 
 
-export default function Steps({currentStep}) {
+export default function Steps() {
+  const {currentStep} = useContext(OrderContext)
   /* display depends on currentStep */
   return(
     <StepContainer>
