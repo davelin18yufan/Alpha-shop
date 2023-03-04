@@ -1,4 +1,6 @@
 import styles from "./stepProgress.module.css"
+import { OrderContext } from "../../contexts/OrderContext"
+import { useContext } from "react"
 
 function StepSign({num, progress, isChecked}) {
   return(
@@ -9,7 +11,9 @@ function StepSign({num, progress, isChecked}) {
   )
 }
 
-export default function StepProgress({currentStep}) {
+export default function StepProgress() {
+  const {currentStep} = useContext(OrderContext)
+
   return(
     <div>
       
