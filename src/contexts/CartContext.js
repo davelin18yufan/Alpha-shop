@@ -1,5 +1,6 @@
 import { createContext, useState } from "react"
 
+//dummy data
 const items = [
   {
     id: '1',
@@ -19,22 +20,52 @@ const items = [
 
 export const CartContext = createContext(items)
 
-export function CartContextProvider({children,currentStep, setCurrentStep}){
+//cart state here
+export function CartContextProvider({children}){
   const [cart, setCart] = useState(items)
 
- 
-
-  function handlePreviousStepClick(e){
-    e.preventDefault()
-    /* button disappear if currentStep < 1 */
-    setCurrentStep(currentStep - 1)
+  function handlePlusCounterClick(target){
+    setCart(cart.map(listItem => {
+      if(listItem.id === target.id){
+        return {
+          ...listItem,
+          quantity: listItem.quantity + 1
+        }
+      }else{
+        return listItem
+      }
+    }))
   }
+
+  function handleMinusCounterClick(target){
+    let nextCart = cart.map(listItem => {
+      if(listItem.id === target.id){
+        return {
+          ...listItem,
+          quantity: listItem.quantity - 1
+        }
+      }else{
+        return listItem
+      }
+    })
+      //if quantity < 0, remove
+      nextCart = nextCart.filter(item => item.quantity > 0)
+      setCart(nextCart)
+  }
+
+ 
    return(
-    <CartContextProvider 
+    <CartContext.Provider 
       value={{
         cart,
-        handlePreviousStepClick}}>
+        setCart,
+        handleMinusCounterClick,
+        handlePlusCounterClick
+        }}>
           {children}
-    </CartContextProvider>
+    </CartContext.Provider>
    )
 }
+
+//Provide State of cart
+//Provide event handler of cart quantity control

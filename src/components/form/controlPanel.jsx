@@ -15,17 +15,18 @@ function Button({ buttonStyle, stepStyle, step, onClick}){
 export default function ControlPanel({currentStep, setCurrentStep}) {
   //destructing object cause the OrderContext value is an object
   const {order} = useContext(OrderContext)
-  const items = useContext(CartContext)
+  const {cart} = useContext(CartContext)
 
   function handleNextStepClick(e){
     e.preventDefault()
     let total = 0
-    items.forEach(item => 
+    cart.forEach(item => 
       total += item.price* item.quantity)
     if(currentStep < 3){
       setCurrentStep(currentStep + 1)
     }else{
-     console.log(order)
+     console.log("Payment Information" , order)
+     console.log(`total: $${total}`)
     }
   }
 

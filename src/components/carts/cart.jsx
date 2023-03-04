@@ -1,9 +1,10 @@
 import styles from "./cart.module.css";
 import { CartContext } from "../../contexts/CartContext";
-import { useState, useContext } from "react"
+import {  useContext } from "react"
 
 
-function CartItem({ item, onPlusCount, onMinusCount }) {
+function CartItem({ item }) {
+  const { handleMinusCounterClick, handlePlusCounterClick} = useContext(CartContext)
   //keep children component naive
   return (
     <ul>
@@ -19,9 +20,9 @@ function CartItem({ item, onPlusCount, onMinusCount }) {
             <b>${item.price}</b>
           </div>
           <div className={styles.cartItemQuantity}>
-            <p className={styles.counter} onClick={()=> { onMinusCount(item) }}>-</p>
+            <p className={styles.counter} onClick={() => handleMinusCounterClick(item)}>-</p>
             <p className={styles.quantityLabel}>{item.quantity}</p>
-            <p className={styles.counter} onClick={() => { onPlusCount(item) }}>+</p>
+            <p className={styles.counter} onClick={() => handlePlusCounterClick(item)}>+</p>
           </div>
         </div>
       </li>
@@ -38,7 +39,8 @@ function Freight() {
   );
 }
 
-function Total({ cart }) {
+function Total() {
+  const {cart} = useContext(CartContext)
   let total = 0;
   //items decided by customer
   cart.forEach((item) => {
@@ -56,38 +58,8 @@ function Total({ cart }) {
 //keep logic and calculation stick with the states
 //maintain simplicity and readable
 export default function Cart() {
-  //define here, passing to several children
-  const items = useContext(CartContext)
-  const [cart, setCart] = useState(items)
-  //define here, cluster up for readability
-  function handlePlusCounterClick(target){
-    setCart(cart.map(listItem => {
-      if(listItem.id === target.id){
-        return {
-          ...listItem,
-          quantity: listItem.quantity + 1
-        }
-      }else{
-        return listItem
-      }
-    }))
-  }
-
-  function handleMinusCounterClick(target){
-    let nextCart = cart.map(listItem => {
-      if(listItem.id === target.id){
-        return {
-          ...listItem,
-          quantity: listItem.quantity - 1
-        }
-      }else{
-        return listItem
-      }
-    })
-      //if quantity < 0, remove
-      nextCart = nextCart.filter(item => item.quantity > 0)
-      setCart(nextCart)
-  }
+  //read state from context
+  const {cart} = useContext(CartContext)
 
   return (
     <>
@@ -98,13 +70,11 @@ export default function Cart() {
           <CartItem 
             item={item} 
             key={item.id} 
-            onPlusCount={handlePlusCounterClick}
-            onMinusCount={handleMinusCounterClick}
           />
-      ))}
+        ))}
       </div>
       <Freight />
-      <Total cart={cart}/>
+      <Total />
     </>
   );
 }

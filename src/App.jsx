@@ -4,9 +4,9 @@ import Steps from "./components/form/Steps"
 import ControlPanel from "./components/form/ControlPanel"
 import Cart from "./components/carts/Cart"
 import Icon from "./icons/icon"
-import { CartContext } from "./contexts/CartContext"
+import { CartContextProvider } from "./contexts/CartContext"
 import { OrderProvider} from "./contexts/OrderContext"
-import { useState, useContext } from "react"
+import { useState } from "react"
 
 function Header() {
   return(
@@ -75,14 +75,13 @@ function Header() {
 }
 
 function App() {
-  const items = useContext(CartContext)
   /* passing currentStep amd setter function down */
   const [currentStep, setCurrentStep] = useState(1)
   return (
     <>
-      <CartContext.Provider value={items} currentStep={currentStep} setCurrentStep={setCurrentStep}>
-        <Header />
-        <main className={styles.main}>
+      <Header />
+      <main className={styles.main}>
+        <CartContextProvider  >
           <OrderProvider currentStep={currentStep}>
             <h2 className={styles.checkTitle}>結帳</h2>
             <section className={styles.container}>
@@ -96,8 +95,8 @@ function App() {
             </div>
             </section>
           </OrderProvider>
-        </main>
-      </CartContext.Provider>
+        </CartContextProvider>
+      </main>
     </>
   );
 }
