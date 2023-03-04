@@ -4,7 +4,7 @@ import {  useContext } from "react"
 
 
 function CartItem({ item }) {
-  const { handleMinusCounterClick, handlePlusCounterClick} = useContext(CartContext)
+  const { handleCounterClick} = useContext(CartContext)
   //keep children component naive
   return (
     <ul>
@@ -20,9 +20,9 @@ function CartItem({ item }) {
             <b>${item.price}</b>
           </div>
           <div className={styles.cartItemQuantity}>
-            <p className={styles.counter} onClick={() => handleMinusCounterClick(item)}>-</p>
+            <p className={styles.counter} onClick={(e) => handleCounterClick(e, item)}>-</p>
             <p className={styles.quantityLabel}>{item.quantity}</p>
-            <p className={styles.counter} onClick={() => handlePlusCounterClick(item)}>+</p>
+            <p className={styles.counter} onClick={(e) => handleCounterClick(e, item)}>+</p>
           </div>
         </div>
       </li>

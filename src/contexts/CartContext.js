@@ -24,47 +24,39 @@ export const CartContext = createContext(items)
 export function CartContextProvider({children}){
   const [cart, setCart] = useState(items)
 
-  function handlePlusCounterClick(target){
-    setCart(cart.map(listItem => {
-      if(listItem.id === target.id){
-        return {
-          ...listItem,
-          quantity: listItem.quantity + 1
-        }
-      }else{
-        return listItem
-      }
-    }))
-  }
-
-  function handleMinusCounterClick(target){
+  function handleCounterClick(e, target){
     let nextCart = cart.map(listItem => {
       if(listItem.id === target.id){
-        return {
-          ...listItem,
-          quantity: listItem.quantity - 1
+        if(e.target.textContent === "+"){
+          return {
+            ...listItem,
+            quantity: listItem.quantity + 1
+          }
+        }else if(e.target.textContent === "-"){
+          return {
+            ...listItem,
+            quantity: listItem.quantity - 1
+            }
         }
       }else{
-        return listItem
+          return listItem
       }
     })
       //if quantity < 0, remove
-      nextCart = nextCart.filter(item => item.quantity > 0)
-      setCart(nextCart)
+    nextCart = nextCart.filter(item => item.quantity > 0)
+    setCart(nextCart)
   }
-
- 
-   return(
-    <CartContext.Provider 
-      value={{
-        cart,
-        setCart,
-        handleMinusCounterClick,
-        handlePlusCounterClick
-        }}>
-          {children}
-    </CartContext.Provider>
-   )
+   
+  return(
+  <CartContext.Provider 
+    value={{
+      cart,
+      setCart,
+      handleCounterClick
+      }}>
+        {children}
+  </CartContext.Provider>
+  )
 }
 
 //Provide State of cart
